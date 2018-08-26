@@ -15,15 +15,14 @@ MongoClient.connect(url,function(err,client){
    const collection = db.collection('Todos');
    //const userCollection = db.collection('Users');
 
-    //browser all the documents
-   collection.deleteMany({"completed" : false},function(err,docs){
-      //console.log(docs);
-      if(err) {
-        return console.log('Deleting items failed');
-      }
-      console.log('Deleting items successfully');
-    });
+    //deleteMany
+   /*collection.deleteMany({"completed" : false}).then((result) =>{
+     console.log(result);
+   });*/
 
+   collection.findOneAndDelete({"completed" : false}).then((result) =>{
+     console.log(result);
+   });
 
    client.close();
 });
